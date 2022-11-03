@@ -23,7 +23,7 @@ class _QuestDetailsWidgetState extends State<QuestDetailsWidget> {
           DecoratedBox(
               decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: widget.quest.colors,
+              colors: toListColor(widget.quest.colors),
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
             ),

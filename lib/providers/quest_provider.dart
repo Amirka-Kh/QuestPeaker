@@ -6,15 +6,12 @@ List questList = <Quest>[
     'Robotics Lab',
     'assets/quest/robot.png',
     'bla-bla',
-    [Colors.lightGreen.shade200, Colors.green.shade800],
+    [QuestColor.lightGreen, QuestColor.green],
   ),
   Quest(
     'Machine Rise',
     'assets/quest/calculator.png',
     'bla-bla',
-    [
-      const Color.fromARGB(255, 131, 24, 24),
-      const Color.fromARGB(255, 255, 6, 56)
-    ],
+    [QuestColor.darkRed, QuestColor.red],
   ),
 ];

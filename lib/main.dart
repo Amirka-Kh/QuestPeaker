@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:quest_peak/domain/models/quest_tracker.dart';
 import './config/styles.dart';
 import './pages/home/home.dart';
+import './domain/models/quest_model.dart';
+import 'domain/models/custom_error.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive
+    ..registerAdapter(QuestColorAdapter())
+    ..registerAdapter(QuestAdapter());
+  QuestTracker.fetch();
   runApp(const MyApp());
 }
 
@@ -20,6 +29,12 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
       ),
+      builder: (BuildContext context, Widget? widget) {
+        ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+          return CustomError(errorDetails: errorDetails);
+        };
+        return widget!;
+      },
       home: const HomePage(),
     );
   }

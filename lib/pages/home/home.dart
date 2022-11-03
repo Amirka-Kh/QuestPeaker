@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
   late PageController _pageController; // will assign later
   final _favourites = <String>{};
-  int currentPage = 0;
 
   // initialized here, not in PageView, overwise
   // _pageController will rebuild often
@@ -22,7 +21,7 @@ class _HomePage extends State<HomePage> {
     super.initState();
     _pageController = PageController(
       viewportFraction: 1.0,
-      initialPage: currentPage,
+      initialPage: 0,
       keepPage: false,
     );
   }

@@ -41,7 +41,7 @@ class QuestWidget extends StatelessWidget {
                 width: 0.9 * screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: quest.colors,
+                    colors: toListColor(quest.colors),
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                   ),
@@ -57,9 +57,9 @@ class QuestWidget extends StatelessWidget {
               width: screenWidth * 0.7,
             ),
           ),
-          const Align(
-            alignment: Alignment(0.8, 0.95),
-            child: SaveToFavouritesWidget(),
+          Align(
+            alignment: const Alignment(0.8, 0.95),
+            child: SaveToFavouritesWidget(quest: quest),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 48, right: 16, bottom: 16),
