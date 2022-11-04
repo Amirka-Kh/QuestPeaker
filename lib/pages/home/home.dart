@@ -36,47 +36,45 @@ class _HomePage extends ConsumerState<HomePage> {
             child: FutureBuilder<List<Quest>>(
                 future: QuestFetcher.quests,
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                            padding:
-                                const EdgeInsets.only(left: 32.0, top: 8.0),
-                            child: RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: "Innopolis",
-                                    style: appTheme.display1()),
-                                const TextSpan(text: "\n"),
-                                TextSpan(
-                                    text: "Secrets",
-                                    style: appTheme.display2()),
-                              ]),
-                            )),
-                        Expanded(
-                            child: PageView(
-                          physics: const ClampingScrollPhysics(),
-                          children: [
-                            for (var i = 0; i < snapshot.data!.length; i++)
-                              QuestWidget(quest: snapshot.data![i]),
-                          ],
-                        ))
-                      ],
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text(
-                      "Could not connect to internet",
-                      style: appTheme.subHeading(),
-                    );
-                  } else {
-                    return const Center(
-                        child: SizedBox(
-                      width: 32,
-                      height: 32,
-                      child: CircularProgressIndicator(),
-                    ));
-                  }
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.only(left: 32.0, top: 8.0),
+                          child: RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                  text: "Innopolis",
+                                  style: appTheme.display1()),
+                              const TextSpan(text: "\n"),
+                              TextSpan(
+                                  text: "Secrets", style: appTheme.display2()),
+                            ]),
+                          )),
+                      Expanded(
+                          child: (snapshot.hasData)
+                              ? (PageView(
+                                  physics: const ClampingScrollPhysics(),
+                                  children: [
+                                    for (var i = 0;
+                                        i < snapshot.data!.length;
+                                        i++)
+                                      QuestWidget(quest: snapshot.data![i]),
+                                  ],
+                                ))
+                              : (snapshot.hasError)
+                                  ? Text(
+                                      "Could not connect to internet",
+                                      style: appTheme.display2(),
+                                    )
+                                  : const Center(
+                                      child: SizedBox(
+                                      width: 32,
+                                      height: 32,
+                                      child: CircularProgressIndicator(),
+                                    )))
+                    ],
+                  );
                 })),
       ),
     );
