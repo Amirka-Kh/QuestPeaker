@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quest_peak/config/style_provider.dart';
+import 'package:quest_peak/domain/models/quest_fetcher.dart';
+import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/providers/quest_provider.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
 
@@ -44,33 +46,51 @@ class _HomePage extends ConsumerState<HomePage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.only(left: 32.0, top: 8.0),
-                  child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(text: "Innopolis", style: appTheme.display1()),
-                      const TextSpan(text: "\n"),
-                      TextSpan(text: "Secrets", style: appTheme.display2()),
-                    ]),
-                  )),
-              Expanded(
-                  child: PageView(
-                physics: const ClampingScrollPhysics(),
-                // controller: _pageController, // maybe use only list?
-                children: [
-                  for (var i = 0; i < questList.length; i++)
-                    QuestWidget(
-                        quest: questList[i],
-                        isSaved: _favourites.contains(questList[i].name)),
-                ],
-              ))
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: FutureBuilder<List<Quest>>(
+                future: QuestFetcher.quests,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                            padding:
+                                const EdgeInsets.only(left: 32.0, top: 8.0),
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                    text: "Innopolis",
+                                    style: appTheme.display1()),
+                                const TextSpan(text: "\n"),
+                                TextSpan(
+                                    text: "Secrets",
+                                    style: appTheme.display2()),
+                              ]),
+                            )),
+                        Expanded(
+                            child: PageView(
+                          physics: const ClampingScrollPhysics(),
+                          // controller: _pageController, // maybe use only list?
+                          children: [
+                            for (var i = 0; i < snapshot.data!.length; i++)
+                              QuestWidget(
+                                  quest: snapshot.data![i],
+                                  isSaved: _favourites
+                                      .contains(snapshot.data![i].name)),
+                          ],
+                        ))
+                      ],
+                    );
+                  } else {
+                    return const Center(
+                        child: SizedBox(
+                      width: 32,
+                      height: 32,
+                      child: CircularProgressIndicator(),
+                    ));
+                  }
+                })),
       ),
     );
   }

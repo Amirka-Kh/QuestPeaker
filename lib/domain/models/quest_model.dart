@@ -14,8 +14,13 @@ class Quest {
   @HiveField(3)
   final List<QuestColor> colors;
   // final List<Color> colors; // Does Hive have provider for Color?
+  @HiveField(4)
+  final String question;
+  @HiveField(5)
+  final String answer;
 
-  Quest(this.name, this.imagePath, this.description, this.colors);
+  Quest(this.name, this.imagePath, this.description, this.colors, this.question,
+      this.answer);
 }
 
 @HiveType(typeId: 1)
@@ -28,6 +33,29 @@ enum QuestColor {
   darkRed,
   @HiveField(3)
   red,
+}
+
+QuestColor toQuestColor(String string) {
+  switch (string) {
+    case 'lightGreen':
+      return QuestColor.lightGreen;
+    case 'green':
+      return QuestColor.green;
+    case 'darkRed':
+      return QuestColor.darkRed;
+    case 'red':
+      return QuestColor.red;
+    default:
+      throw 'Color not defined';
+  }
+}
+
+List<QuestColor> toListQuestColor(List<String> list) {
+  List<QuestColor> list2 = [];
+  for (String string in list) {
+    list2.add(toQuestColor(string));
+  }
+  return list2;
 }
 
 Color getColor(QuestColor color) {
