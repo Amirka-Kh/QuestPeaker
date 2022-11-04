@@ -1,33 +1,44 @@
 import 'package:flutter/material.dart';
 
-class AppTheme {
-  static const TextStyle display1 = TextStyle(
-    color: Colors.black,
-    fontSize: 38,
-    fontWeight: FontWeight.w600,
-    letterSpacing: 1.2,
-  );
+abstract class AppTheme {
+  TextStyle display1();
+  TextStyle display2();
+  TextStyle heading();
+  TextStyle subHeading();
+}
 
-  static const TextStyle display2 = TextStyle(
-    color: Colors.black,
-    fontSize: 32,
-    fontWeight: FontWeight.normal,
-    letterSpacing: 1.1,
-  );
+class AppThemeDefault extends AppTheme {
+  @override
+  TextStyle display1() => const TextStyle(
+        color: Colors.black,
+        fontSize: 38,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 1.2,
+      );
 
-  static const TextStyle heading = TextStyle(
-    color: Colors.white,
-    fontSize: 34,
-    fontWeight: FontWeight.w900,
-    letterSpacing: 1.2,
-  );
+  @override
+  TextStyle display2() => const TextStyle(
+        color: Colors.black,
+        fontSize: 32,
+        fontWeight: FontWeight.normal,
+        letterSpacing: 1.1,
+      );
 
-  static const TextStyle subHeading = TextStyle(
-    color: Colors.white,
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-    inherit: true,
-  );
+  @override
+  TextStyle heading() => const TextStyle(
+        color: Colors.white,
+        fontSize: 34,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 1.2,
+      );
+
+  @override
+  TextStyle subHeading() => const TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+        inherit: true,
+      );
 }
 
 class QuestCardClipper extends CustomClipper<Path> {

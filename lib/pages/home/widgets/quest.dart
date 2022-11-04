@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
 import 'package:quest_peak/pages/home/widgets/to_favorite_button.dart';
 import 'package:quest_peak/config/styles.dart';
 
-class QuestWidget extends StatelessWidget {
+class QuestWidget extends ConsumerWidget {
   final Quest quest;
   final bool isSaved;
 
@@ -14,9 +16,10 @@ class QuestWidget extends StatelessWidget {
   // for this purposes InkWell is used since it  shows a visual indication
   // that the touch was received, while in GestureDetector this should be implemented
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final appTheme = ref.watch(themeProvider);
 
     return InkWell(
       onTap: () {
@@ -72,13 +75,13 @@ class QuestWidget extends StatelessWidget {
                   child: Container(
                     child: Text(
                       quest.name,
-                      style: AppTheme.heading,
+                      style: appTheme.heading(),
                     ),
                   ),
                 ),
-                const Text(
+                Text(
                   "Learn more",
-                  style: AppTheme.subHeading,
+                  style: appTheme.subHeading(),
                 ),
               ],
             ),

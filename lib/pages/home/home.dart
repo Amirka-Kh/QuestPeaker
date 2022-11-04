@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/providers/quest_provider.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
-import 'package:quest_peak/config/styles.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePage();
+  ConsumerState<HomePage> createState() => _HomePage();
 }
 
-class _HomePage extends State<HomePage> {
+class _HomePage extends ConsumerState<HomePage> {
   late PageController _pageController; // will assign later
   final _favourites = <String>{};
 
@@ -28,6 +29,8 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = ref.watch(themeProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('QuestPeaker'),
@@ -48,10 +51,10 @@ class _HomePage extends State<HomePage> {
               Padding(
                   padding: const EdgeInsets.only(left: 32.0, top: 8.0),
                   child: RichText(
-                    text: const TextSpan(children: [
-                      TextSpan(text: "Innopolis", style: AppTheme.display1),
-                      TextSpan(text: "\n"),
-                      TextSpan(text: "Secrets", style: AppTheme.display2),
+                    text: TextSpan(children: [
+                      TextSpan(text: "Innopolis", style: appTheme.display1()),
+                      const TextSpan(text: "\n"),
+                      TextSpan(text: "Secrets", style: appTheme.display2()),
                     ]),
                   )),
               Expanded(
@@ -73,6 +76,8 @@ class _HomePage extends State<HomePage> {
   }
 
   void _pushSaved() {
+    final appTheme = ref.watch(themeProvider);
+
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (context) {
@@ -81,7 +86,7 @@ class _HomePage extends State<HomePage> {
               return ListTile(
                 title: Text(
                   pair,
-                  style: AppTheme.heading,
+                  style: appTheme.heading(),
                 ),
               );
             },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quest_peak/domain/models/quest_tracker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './config/styles.dart';
 import './pages/home/home.dart';
 import './domain/models/quest_model.dart';
@@ -12,7 +13,7 @@ void main() async {
     ..registerAdapter(QuestColorAdapter())
     ..registerAdapter(QuestAdapter());
   QuestTracker.fetch();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

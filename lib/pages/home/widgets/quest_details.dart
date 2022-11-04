@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
-import 'package:quest_peak/config/styles.dart';
 
-class QuestDetailsWidget extends StatefulWidget {
+class QuestDetailsWidget extends ConsumerStatefulWidget {
   final Quest quest;
 
   const QuestDetailsWidget({super.key, required this.quest});
 
   @override
-  State<QuestDetailsWidget> createState() => _QuestDetailsWidgetState();
+  ConsumerState<QuestDetailsWidget> createState() => _QuestDetailsWidgetState();
 }
 
-class _QuestDetailsWidgetState extends State<QuestDetailsWidget> {
+class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final appTheme = ref.watch(themeProvider);
 
     return Scaffold(
       body: Stack(
@@ -54,12 +56,13 @@ class _QuestDetailsWidgetState extends State<QuestDetailsWidget> {
                       const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8),
                   child: Material(
                       color: Colors.transparent,
-                      child: Text(widget.quest.name, style: AppTheme.heading)),
+                      child:
+                          Text(widget.quest.name, style: appTheme.heading())),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(32, 0, 8, 120),
                   child: Text(widget.quest.description,
-                      style: AppTheme.subHeading),
+                      style: appTheme.subHeading()),
                 ),
               ],
             ),
