@@ -12,15 +12,18 @@ Download APK here: https://github.com/Amirka-Kh/QuestPeaker/blob/main/build/app/
 ## Screenshots
 
 Custom ico of the app(previous version)
-
-<img width="518" alt="imagen" src="/Screenshots/img.png">
+<br/>
+<img width="50" alt="imagen" src="/Screenshots/img.png">
 
 You can swipe and search for an interesting quest
-<img width="518" alt="imagen" src="/Screenshots/img_1.png">
-<img width="518" alt="imagen" src="/Screenshots/img_2.png">
+<br/>
+<img width="400" alt="imagen" src="/Screenshots/img_1.png">
+<img width="400" alt="imagen" src="/Screenshots/img_2.png">
 
 You can mark the quest as your favourite
-<img width="518" alt="imagen" src="/Screenshots/img_3.png">
+<br/>
+<img width="400" alt="imagen" src="/Screenshots/img_3.png">
 
 Quest Page
-<img width="518" alt="imagen" src="/Screenshots/img_4.png">
+<br/>
+<img width="400" alt="imagen" src="/Screenshots/img_4.png">
