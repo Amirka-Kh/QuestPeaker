@@ -59,6 +59,10 @@ class QuestTracker {
     return result;
   }
 
+  static Future<List<Quest>> getQuests() async {
+    return quests;
+  }
+
   static Future<bool> deleteQuest(Quest quest) async {
     bool result = true;
     await quests.then((list) {

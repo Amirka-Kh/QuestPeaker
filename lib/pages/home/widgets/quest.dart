@@ -8,9 +8,8 @@ import 'package:quest_peak/config/styles.dart';
 
 class QuestWidget extends ConsumerWidget {
   final Quest quest;
-  final bool isSaved;
 
-  const QuestWidget({super.key, required this.quest, required this.isSaved});
+  const QuestWidget({super.key, required this.quest});
 
   // user will interact with a widget, thus Gesture detection is needed
   // for this purposes InkWell is used since it  shows a visual indication

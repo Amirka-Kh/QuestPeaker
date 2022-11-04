@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_fetcher.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
-import 'package:quest_peak/providers/quest_provider.dart';
+import 'package:quest_peak/domain/models/quest_tracker.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
+import 'package:quest_peak/pages/home/widgets/quest_details.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -14,21 +15,6 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePage extends ConsumerState<HomePage> {
-  late PageController _pageController; // will assign later
-  final _favourites = <String>{};
-
-  // initialized here, not in PageView, overwise
-  // _pageController will rebuild often
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(
-      viewportFraction: 1.0,
-      initialPage: 0,
-      keepPage: false,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final appTheme = ref.watch(themeProvider);
@@ -71,16 +57,17 @@ class _HomePage extends ConsumerState<HomePage> {
                         Expanded(
                             child: PageView(
                           physics: const ClampingScrollPhysics(),
-                          // controller: _pageController, // maybe use only list?
                           children: [
                             for (var i = 0; i < snapshot.data!.length; i++)
-                              QuestWidget(
-                                  quest: snapshot.data![i],
-                                  isSaved: _favourites
-                                      .contains(snapshot.data![i].name)),
+                              QuestWidget(quest: snapshot.data![i]),
                           ],
                         ))
                       ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text(
+                      "Could not connect to internet",
+                      style: appTheme.subHeading(),
                     );
                   } else {
                     return const Center(
@@ -101,29 +88,53 @@ class _HomePage extends ConsumerState<HomePage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (context) {
-          final tiles = _favourites.map(
-            (pair) {
-              return ListTile(
-                title: Text(
-                  pair,
-                  style: appTheme.heading(),
-                ),
-              );
-            },
-          );
-          final divided = tiles.isNotEmpty
-              ? ListTile.divideTiles(
-                  context: context,
-                  tiles: tiles,
-                ).toList()
-              : <Widget>[];
-
           return Scaffold(
-            appBar: AppBar(
-              title: const Text('Saved Suggestions'),
-            ),
-            body: ListView(children: divided),
-          );
+              appBar: AppBar(
+                title: const Text('Saved Suggestions'),
+              ),
+              body: FutureBuilder<List<Quest>>(
+                  future: QuestTracker.getQuests(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final tiles = snapshot.data!.map(
+                        (quest) {
+                          return ListTile(
+                            title: Text(
+                              quest.name,
+                              style: appTheme.display2(),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration:
+                                      const Duration(milliseconds: 400),
+                                  pageBuilder: (context, _, __) {
+                                    return QuestDetailsWidget(quest: quest);
+                                  },
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                      final divided = tiles.isNotEmpty
+                          ? ListTile.divideTiles(
+                              context: context,
+                              tiles: tiles,
+                            ).toList()
+                          : <Widget>[];
+
+                      return ListView(children: divided);
+                    } else {
+                      return const Center(
+                          child: SizedBox(
+                        width: 32,
+                        height: 32,
+                        child: CircularProgressIndicator(),
+                      ));
+                    }
+                  }));
         },
       ),
     );
