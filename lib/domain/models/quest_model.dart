@@ -13,14 +13,13 @@ class Quest {
   final String description;
   @HiveField(3)
   final List<QuestColor> colors;
-  // final List<Color> colors; // Does Hive have provider for Color?
   @HiveField(4)
   final String question;
   @HiveField(5)
   final String answer;
+  // final List<Color> colors; // Does Hive have provider for Color?
 
-  Quest(this.name, this.imagePath, this.description, this.colors, this.question,
-      this.answer);
+  Quest(this.name, this.imagePath, this.description, this.colors, this.question, this.answer);
 }
 
 @HiveType(typeId: 1)

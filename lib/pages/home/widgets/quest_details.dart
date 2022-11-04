@@ -64,6 +64,51 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                   child: Text(widget.quest.description,
                       style: appTheme.subHeading()),
                 ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 0, 8, 20),
+                  child: Text(widget.quest.question,
+                      style: appTheme.subHeading()),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
+                  child: TextFormField(
+
+                    style: appTheme.subHeading(),
+                    cursorColor: Colors.white,
+                    onChanged: (text) {
+                      if (text == widget.quest.answer) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text('You are right!')));
+                      } else {
+
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content:
+                            Text('Try again!')));
+                      }
+                    },
+
+                    decoration: const InputDecoration(
+
+                      labelText: 'Answer the question',
+                      labelStyle: TextStyle(
+                        color: Colors.white
+                        ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                          width: 2.0,
+                        ),
+                      ),
+
+
+                    ),
+                  ),
+                ),
               ],
             ),
           )
