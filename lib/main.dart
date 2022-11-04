@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:quest_peak/domain/models/quest_fetcher.dart';
 import 'package:quest_peak/domain/models/quest_tracker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './config/styles.dart';
@@ -13,6 +14,7 @@ void main() async {
     ..registerAdapter(QuestColorAdapter())
     ..registerAdapter(QuestAdapter());
   QuestTracker.fetch();
+  QuestFetcher.fetch();
   runApp(const ProviderScope(child: MyApp()));
 }
 
