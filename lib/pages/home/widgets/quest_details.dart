@@ -71,11 +71,11 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
-                  child: TextFormField(
+                  child: TextField(
 
                     style: appTheme.subHeading(),
                     cursorColor: Colors.white,
-                    onChanged: (text) {
+                    onSubmitted: (text) {
                       if (text == widget.quest.answer) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text('You are right!')));
