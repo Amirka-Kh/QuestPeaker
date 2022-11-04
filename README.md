@@ -1,16 +1,26 @@
-# quest_peak
+# QuestPeak
+## Description:
+Interactive city-scape quests.
+User gets list of quests and bring one of it. Each quest consists of four parts: coordinate of quest, which is hidden from user; verbal description of this coordinate; the task and the answer. User has to guess, which coordinate is meant, and go to it. Once user is close to it (for example, distance is less than 50 meters), he gets task. Answer to this task is somewhere close to point, and it consists of some puzzle. User searches, thinks and writes answer, which is checked.
 
-A new Flutter project.
+Stack: Flutter, Dart.
 
-## Getting Started
+## APK
 
-This project is a starting point for a Flutter application.
+Download APK here: 
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Custom ico of the app(previous version)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="518" alt="imagen" src="/Screenshots/img.png">
+
+You can swipe and search for an interesting quest
+<img width="518" alt="imagen" src="/Screenshots/img_1.png">
+<img width="518" alt="imagen" src="/Screenshots/img_2.png">
+
+You can mark the quest as your favourite
+<img width="518" alt="imagen" src="/Screenshots/img_3.png">
+
+Quest Page
+<img width="518" alt="imagen" src="/Screenshots/img_4.png">
