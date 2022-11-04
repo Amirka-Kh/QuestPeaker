@@ -51,7 +51,9 @@ class CustomError extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 5,
-                  child: Text(kDebugMode ? errorLog() : errorLog()),
+                  child: Text(kDebugMode
+                      ? errorLog()
+                      : "The developer will be notified, when application will be restarted"),
                 ),
               ],
             ))));
