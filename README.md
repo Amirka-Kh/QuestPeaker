@@ -29,3 +29,5 @@ quest and details page screen
 <br/>
 <img width="400" alt="imagen" src="/Screenshots/img_3.png">
 <img width="400" alt="imagen" src="/Screenshots/img_4.png">
+<img width="400" alt="imagen" src="/Screenshots/img_5.png">
+<img width="400" alt="imagen" src="/Screenshots/img_6.png">
