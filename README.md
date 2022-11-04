@@ -7,7 +7,7 @@ Stack: Flutter, Dart.
 
 ## APK
 
-Download APK here: 
+Download APK here: https://github.com/Amirka-Kh/QuestPeaker/blob/main/build/app/outputs/apk/release/app-release.apk
 
 ## Screenshots
 
