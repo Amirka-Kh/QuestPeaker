@@ -1,5 +1,69 @@
 [
     {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Where the beginning of bridge to civilization takes place",
+        "colors": ["lightGreen", "green"],
+        "question": "What resource is mined?",
+        "answer": "Crystal"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Entrance to other side of city",
+        "colors": ["lightGreen", "green"],
+        "question": "What lights up over nine Zions",
+        "answer": "Star"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Building with threatening inscription",
+        "colors": ["lightGreen", "green"],
+        "question": "What is the only other inscription in English",
+        "answer": "Foodcourt"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "A delivery service between two other delivery services",
+        "colors": ["lightGreen", "green"],
+        "question": "What is the number of building, which Santa like?",
+        "answer": "132"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Near the golden plate",
+        "colors": ["lightGreen", "green"],
+        "question": "What is the color of pipes?",
+        "answer": "Yellow"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Where we study java first time",
+        "colors": ["lightGreen", "green"],
+        "question": "What is the number of building?",
+        "answer": "140"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "A square with big products",
+        "colors": ["lightGreen", "green"],
+        "question": "What is the number of products?",
+        "answer": "6"
+    },
+    {
+        "name": "",
+        "imagePath": "assets/quest/robot.png",
+        "description": "Where student suffers, after he suffered enough during semester",
+        "colors": ["lightGreen", "green"],
+        "question": "What sport is ultra-right?",
+        "answer": "Tennis"
+    },
+    {
         "name": "Robotics Lab",
         "imagePath": "assets/quest/robot.png",
         "description": "the newest invention \"native robot\" was lost in the laboratories of labor technology. The new invention has intellect and senses, it is not large and can move independently. Engineers report that shortly before lunch, a quarrel broke out between the two scientists, which could have prompted the robot to escape. Ask scientists and find a robot",
