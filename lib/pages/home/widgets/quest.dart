@@ -71,11 +71,9 @@ class QuestWidget extends ConsumerWidget {
               children: <Widget>[
                 Material(
                   color: Colors.transparent,
-                  child: Container(
-                    child: Text(
-                      quest.name,
-                      style: appTheme.heading(),
-                    ),
+                  child: Text(
+                    quest.name,
+                    style: appTheme.heading(),
                   ),
                 ),
                 Text(

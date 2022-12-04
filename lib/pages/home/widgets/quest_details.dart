@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quest_peak/config/string.dart';
 import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 
@@ -66,33 +67,30 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(32, 0, 8, 20),
-                  child: Text(widget.quest.question,
-                      style: appTheme.subHeading()),
+                  child:
+                      Text(widget.quest.question, style: appTheme.subHeading()),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
                   child: TextField(
-
                     style: appTheme.subHeading(),
                     cursorColor: Colors.white,
                     onSubmitted: (text) {
-                      if (text == widget.quest.answer) {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text('You are right!')));
+                      if (checkAnswer(widget.quest.answer, text)) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                duration: Duration(seconds: 2),
+                                content: Text('You are right!')));
                       } else {
-
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content:
-                            Text('Try again!')));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                duration: Duration(seconds: 2),
+                                content: Text('Try again!')));
                       }
                     },
-
                     decoration: const InputDecoration(
-
                       labelText: 'Answer the question',
-                      labelStyle: TextStyle(
-                        color: Colors.white
-                        ),
+                      labelStyle: TextStyle(color: Colors.white),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
@@ -104,8 +102,6 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                           width: 2.0,
                         ),
                       ),
-
-
                     ),
                   ),
                 ),

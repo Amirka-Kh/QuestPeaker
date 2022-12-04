@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_fetcher.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/domain/models/quest_tracker.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
+import 'package:quest_peak/pages/settings.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -21,12 +23,17 @@ class _HomePage extends ConsumerState<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QuestPeaker'),
+        title: Text(AppLocalizations.of(context)!.applicationName),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
             onPressed: _pushSaved,
-            tooltip: 'Saved Suggestions',
+            tooltip: AppLocalizations.of(context)!.savedSuggestions,
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: _pushSettings,
+            tooltip: AppLocalizations.of(context)!.settings,
           ),
         ],
       ),
@@ -88,7 +95,7 @@ class _HomePage extends ConsumerState<HomePage> {
         builder: (context) {
           return Scaffold(
               appBar: AppBar(
-                title: const Text('Saved Suggestions'),
+                title: Text(AppLocalizations.of(context)!.savedSuggestions),
               ),
               body: FutureBuilder<List<Quest>>(
                   future: QuestTracker.getQuests(),
@@ -136,5 +143,10 @@ class _HomePage extends ConsumerState<HomePage> {
         },
       ),
     );
+  }
+
+  void _pushSettings() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const SettingsPage()));
   }
 }
