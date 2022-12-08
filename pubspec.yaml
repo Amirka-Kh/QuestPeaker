@@ -39,7 +39,8 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^1.1.2
   flutter_riverpod: ^2.0.2
-
+  geolocator: ^9.0.2
+  toggle_switch: ^2.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -78,6 +79,14 @@ flutter:
   assets:
     - assets/quest/robot.png
     - assets/quest/calculator.png
+    - assets/quest/Bridge.jpg
+    - assets/quest/Emoji.jpg
+    - assets/quest/Inscription.jpg
+    - assets/quest/Light.jpg
+    - assets/quest/Plate.jpg
+    - assets/quest/Products.jpg
+    - assets/quest/Programming.jpg
+    - assets/quest/Suffer.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

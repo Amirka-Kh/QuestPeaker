@@ -1,37 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
 
-// final settingsProvider = StateNotifierProvider<SettingsClass, SettingsType>(
-//     (ref) => SettingsClass());
-
 final darkModeProvider =
-    StateNotifierProvider<SettingsClass, bool>((ref) => SettingsClass(false));
+    StateNotifierProvider<DarkModeClass, bool>((ref) => DarkModeClass(false));
 
-class SettingsClass extends StateNotifier<bool> {
-  SettingsClass(super.state);
+class DarkModeClass extends StateNotifier<bool> {
+  DarkModeClass(super.state);
 
   void set(bool s) {
     state = s;
   }
 }
 
-/* class SettingsType {
-  SettingsType({required darkMode});
-  bool darkMode = false;
-} */
+final filterProvider = StateNotifierProvider<FilterClass, FilterType>(
+    (ref) => FilterClass(FilterType.all));
 
-/* class SettingsClass extends StateNotifier<SettingsType> {
-  SettingsClass() : super(SettingsType(darkMode: false));
+class FilterClass extends StateNotifier<FilterType> {
+  FilterClass(super.state);
 
-  void setDarkMode(bool value) {
-    state.darkMode = value;
+  void set(FilterType s) {
+    state = s;
   }
-
-  bool getDarkMode() {
-    return state.darkMode;
-  }
-
-  void setSettings(SettingsType settings) {
-    state = settings;
-  }
-} */
+}

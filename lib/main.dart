@@ -16,8 +16,10 @@ void main() async {
   Hive
     ..registerAdapter(QuestColorAdapter())
     ..registerAdapter(QuestAdapter())
+    ..registerAdapter(FilterTypeAdapter())
     ..registerAdapter(SettingsAdapter());
-  QuestTracker.fetch();
+  QuestSavedTracker.fetch();
+  QuestSolvedTracker.fetch();
   QuestFetcher.fetch();
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -28,21 +30,15 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SettingsTracker.fetch(ref);
-    final settings = ref.watch(darkModeProvider);
 
     return MaterialApp(
-      title: 'Startup Name Generator',
-      theme: settings == false
-          ? ThemeData(
-              appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
-            ))
-          : ThemeData(
-              appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-            )),
+      title: 'Wnder',
+      theme: ThemeData(
+          brightness: Brightness.light,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white, foregroundColor: Colors.black)),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ref.watch(darkModeProvider) ? ThemeMode.dark : ThemeMode.light,
       builder: (BuildContext context, Widget? widget) {
         ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
           return CustomError(errorDetails: errorDetails);

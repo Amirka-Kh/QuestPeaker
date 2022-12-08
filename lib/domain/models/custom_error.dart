@@ -1,8 +1,11 @@
 // import 'package:firebase_crashlytics/firebase_crashlytics.dart'; // Probably, one day...
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:quest_peak/config/style_provider.dart';
 
-class CustomError extends StatelessWidget {
+class CustomError extends ConsumerWidget {
   final FlutterErrorDetails errorDetails;
   const CustomError({Key? key, required this.errorDetails}) : super(key: key);
 
@@ -22,7 +25,9 @@ class CustomError extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appTheme = ref.watch(themeProvider);
+
     if (!kDebugMode) {
       // FirebaseCrashlytics.instance.log(errorLog());
     }
@@ -42,18 +47,20 @@ class CustomError extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 1,
                   child: Text(
-                    'An error has occurred',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    AppLocalizations.of(context)!.anErrorHasOccured,
+                    style: appTheme.subHeading(),
                   ),
                 ),
                 Expanded(
                   flex: 5,
-                  child: Text(kDebugMode
-                      ? errorLog()
-                      : "The developer will be notified, when application will be restarted"),
+                  child: Text(
+                      kDebugMode
+                          ? errorLog()
+                          : AppLocalizations.of(context)!.theDeveloperNotified,
+                      style: appTheme.subHeading()),
                 ),
               ],
             ))));

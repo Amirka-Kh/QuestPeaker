@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quest_peak/config/quest_provider.dart';
 import 'package:quest_peak/config/string.dart';
 import 'package:quest_peak/config/style_provider.dart';
+import 'package:quest_peak/domain/models/quest_locator.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
+import 'package:quest_peak/domain/models/quest_tracker.dart';
 
 class QuestDetailsWidget extends ConsumerStatefulWidget {
   final Quest quest;
@@ -14,10 +20,25 @@ class QuestDetailsWidget extends ConsumerStatefulWidget {
 }
 
 class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
+  double latitude = 0.0, longitude = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      setState(() async {
+        QuestGeolocator.getPosition().then((position) {
+          latitude = position.latitude;
+          longitude = position.longitude;
+        });
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     final appTheme = ref.watch(themeProvider);
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Stack(
@@ -37,20 +58,57 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
               children: <Widget>[
                 const SizedBox(height: 40),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 16),
-                  child: IconButton(
-                    iconSize: 40,
-                    icon: const Icon(Icons.close),
-                    color: Colors.white.withOpacity(0.9),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
+                    padding:
+                        const EdgeInsets.only(top: 8.0, left: 16, right: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        IconButton(
+                          iconSize: 40,
+                          icon: const Icon(Icons.close),
+                          color: Colors.white.withOpacity(0.9),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Icon(Icons.lightbulb,
+                            size: 40,
+                            color: QuestGeolocator.distanceLess(
+                                    longitude,
+                                    latitude,
+                                    widget.quest.longitude,
+                                    widget.quest.latitude,
+                                    QuestGeolocator.acceptanceDistance)
+                                ? Colors.yellow
+                                : null),
+                        FutureBuilder<bool>(
+                            future:
+                                QuestSolvedTracker.containQuest(widget.quest),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                bool isSolved = snapshot.data!;
+                                return Icon(
+                                  isSolved
+                                      ? Icons.check_box
+                                      : Icons.check_box_outline_blank,
+                                  size: 40,
+                                  color: isSolved ? Colors.green : null,
+                                  semanticLabel: isSolved
+                                      ? AppLocalizations.of(context)!.isSolved
+                                      : AppLocalizations.of(context)!
+                                          .isNotSolved,
+                                );
+                              } else {
+                                return const CircularProgressIndicator();
+                              }
+                            }),
+                      ],
+                    )),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                   child: Image.asset(widget.quest.imagePath,
-                      height: screenHeight * 0.45),
+                      height: screenHeight * 0.4),
                 ),
                 Padding(
                   padding:
@@ -61,7 +119,7 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                           Text(widget.quest.name, style: appTheme.heading())),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(32, 0, 8, 120),
+                  padding: const EdgeInsets.fromLTRB(32, 0, 8, 30),
                   child: Text(widget.quest.description,
                       style: appTheme.subHeading()),
                 ),
@@ -71,32 +129,36 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                       Text(widget.quest.question, style: appTheme.subHeading()),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 60),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: TextField(
                     style: appTheme.subHeading(),
                     cursorColor: Colors.white,
                     onSubmitted: (text) {
                       if (checkAnswer(widget.quest.answer, text)) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                duration: Duration(seconds: 2),
-                                content: Text('You are right!')));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            duration: const Duration(seconds: 2),
+                            content: Text(
+                                AppLocalizations.of(context)!.correctAnswer)));
+                        QuestSolvedTracker.addQuest(widget.quest);
+                        ref
+                            .watch(questSolvedProvider.notifier)
+                            .set(!ref.watch(questSolvedProvider));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                duration: Duration(seconds: 2),
-                                content: Text('Try again!')));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            duration: const Duration(seconds: 2),
+                            content: Text(AppLocalizations.of(context)!
+                                .incorrectAnswer)));
                       }
                     },
-                    decoration: const InputDecoration(
-                      labelText: 'Answer the question',
-                      labelStyle: TextStyle(color: Colors.white),
-                      focusedBorder: OutlineInputBorder(
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.enterYourAnswer,
+                      labelStyle: const TextStyle(color: Colors.white),
+                      focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
                         ),
                       ),
-                      enabledBorder: OutlineInputBorder(
+                      enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
                           width: 2.0,

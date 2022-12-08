@@ -8,18 +8,23 @@ class Quest {
   @HiveField(0)
   final String name;
   @HiveField(1)
-  final String imagePath;
-  @HiveField(2)
   final String description;
-  @HiveField(3)
-  final List<QuestColor> colors;
-  @HiveField(4)
+  @HiveField(2)
   final String question;
-  @HiveField(5)
+  @HiveField(3)
   final String answer;
+  @HiveField(4)
+  final double latitude;
+  @HiveField(5)
+  final double longitude;
+  @HiveField(6)
+  final String imagePath;
+  @HiveField(7)
+  final List<QuestColor> colors;
   // final List<Color> colors; // Does Hive have provider for Color?
 
-  Quest(this.name, this.imagePath, this.description, this.colors, this.question, this.answer);
+  Quest(this.name, this.description, this.question, this.answer, this.latitude,
+      this.longitude, this.imagePath, this.colors);
 }
 
 @HiveType(typeId: 1)

@@ -20,28 +20,34 @@ class QuestAdapter extends TypeAdapter<Quest> {
       fields[0] as String,
       fields[1] as String,
       fields[2] as String,
-      (fields[3] as List).cast<QuestColor>(),
-      fields[4] as String,
-      fields[5] as String,
+      fields[3] as String,
+      fields[4] as double,
+      fields[5] as double,
+      fields[6] as String,
+      (fields[7] as List).cast<QuestColor>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Quest obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.imagePath)
-      ..writeByte(2)
       ..write(obj.description)
-      ..writeByte(3)
-      ..write(obj.colors)
-      ..writeByte(4)
+      ..writeByte(2)
       ..write(obj.question)
+      ..writeByte(3)
+      ..write(obj.answer)
+      ..writeByte(4)
+      ..write(obj.latitude)
       ..writeByte(5)
-      ..write(obj.answer);
+      ..write(obj.longitude)
+      ..writeByte(6)
+      ..write(obj.imagePath)
+      ..writeByte(7)
+      ..write(obj.colors);
   }
 
   @override
