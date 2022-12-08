@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'package:quest_peak/domain/models/quest_model.dart';
@@ -21,11 +20,13 @@ class QuestFetcher {
       for (int i = 0; i < list.length; i++) {
         quests.add(Quest(
             list[i]['name'],
-            list[i]['imagePath'],
             list[i]['description'],
-            toListQuestColor(list[i]['colors'].cast<String>()),
             list[i]['question'],
-            list[i]['answer']));
+            list[i]['answer'],
+            list[i]['latitude'],
+            list[i]['longitude'],
+            list[i]['imagePath'],
+            toListQuestColor(list[i]['colors'].cast<String>())));
       }
       return quests;
     } else {

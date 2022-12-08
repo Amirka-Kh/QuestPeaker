@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quest_peak/config/settings_provider.dart';
 import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_fetcher.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/domain/models/quest_tracker.dart';
+import 'package:quest_peak/domain/models/settings_model.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
+import 'package:quest_peak/pages/settings.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -15,18 +19,37 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePage extends ConsumerState<HomePage> {
+  Future<List<Quest>> getListQuests() async {
+    late List<Quest> quests, solvedQuests;
+    await QuestFetcher.quests.then((list) => quests = list);
+    await QuestSolvedTracker.getQuests().then((list) => solvedQuests = list);
+    switch (ref.watch(filterProvider)) {
+      case FilterType.all:
+        return quests;
+      case FilterType.solved:
+        return solvedQuests;
+      case FilterType.notSolved:
+        return quests.where((x) => !solvedQuests.contains(x)).toList();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final appTheme = ref.watch(themeProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QuestPeaker'),
+        title: Text(AppLocalizations.of(context)!.applicationName),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
             onPressed: _pushSaved,
-            tooltip: 'Saved Suggestions',
+            tooltip: AppLocalizations.of(context)!.savedSuggestions,
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: _pushSettings,
+            tooltip: AppLocalizations.of(context)!.settings,
           ),
         ],
       ),
@@ -34,7 +57,7 @@ class _HomePage extends ConsumerState<HomePage> {
         child: Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
             child: FutureBuilder<List<Quest>>(
-                future: QuestFetcher.quests,
+                future: getListQuests(),
                 builder: (context, snapshot) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,11 +67,14 @@ class _HomePage extends ConsumerState<HomePage> {
                           child: RichText(
                             text: TextSpan(children: [
                               TextSpan(
-                                  text: "Innopolis",
+                                  text: AppLocalizations.of(context)!
+                                      .innopolisSecrets1,
                                   style: appTheme.display1()),
                               const TextSpan(text: "\n"),
                               TextSpan(
-                                  text: "Secrets", style: appTheme.display2()),
+                                  text: AppLocalizations.of(context)!
+                                      .innopolisSecrets2,
+                                  style: appTheme.display2()),
                             ]),
                           )),
                       Expanded(
@@ -56,15 +82,14 @@ class _HomePage extends ConsumerState<HomePage> {
                               ? (PageView(
                                   physics: const ClampingScrollPhysics(),
                                   children: [
-                                    for (var i = 0;
-                                        i < snapshot.data!.length;
-                                        i++)
-                                      QuestWidget(quest: snapshot.data![i]),
+                                    for (var i in snapshot.data!)
+                                      QuestWidget(quest: i)
                                   ],
                                 ))
                               : (snapshot.hasError)
                                   ? Text(
-                                      "Could not connect to internet",
+                                      AppLocalizations.of(context)!
+                                          .connectionError,
                                       style: appTheme.display2(),
                                     )
                                   : const Center(
@@ -88,10 +113,10 @@ class _HomePage extends ConsumerState<HomePage> {
         builder: (context) {
           return Scaffold(
               appBar: AppBar(
-                title: const Text('Saved Suggestions'),
+                title: Text(AppLocalizations.of(context)!.savedSuggestions),
               ),
               body: FutureBuilder<List<Quest>>(
-                  future: QuestTracker.getQuests(),
+                  future: QuestSavedTracker.getQuests(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final tiles = snapshot.data!.map(
@@ -136,5 +161,10 @@ class _HomePage extends ConsumerState<HomePage> {
         },
       ),
     );
+  }
+
+  void _pushSettings() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const SettingsPage()));
   }
 }

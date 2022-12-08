@@ -26,6 +26,40 @@ class AppThemeDefault extends AppTheme {
 
   @override
   TextStyle heading() => const TextStyle(
+        color: Colors.black,
+        fontSize: 34,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 1.2,
+      );
+
+  @override
+  TextStyle subHeading() => const TextStyle(
+        color: Colors.black,
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+        inherit: true,
+      );
+}
+
+class AppThemeDark extends AppTheme {
+  @override
+  TextStyle display1() => const TextStyle(
+        color: Colors.white,
+        fontSize: 38,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 1.2,
+      );
+
+  @override
+  TextStyle display2() => const TextStyle(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.normal,
+        letterSpacing: 1.1,
+      );
+
+  @override
+  TextStyle heading() => const TextStyle(
         color: Colors.white,
         fontSize: 34,
         fontWeight: FontWeight.w900,

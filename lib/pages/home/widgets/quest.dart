@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quest_peak/config/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
 import 'package:quest_peak/pages/home/widgets/to_favorite_button.dart';
+import 'package:quest_peak/pages/home/widgets/is_solved.dart';
 import 'package:quest_peak/config/styles.dart';
 
 class QuestWidget extends ConsumerWidget {
@@ -39,7 +41,7 @@ class QuestWidget extends ConsumerWidget {
             child: ClipPath(
               clipper: QuestCardClipper(),
               child: Container(
-                height: 0.5 * screenHeight,
+                height: 0.7 * screenHeight,
                 width: 0.9 * screenWidth,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -60,6 +62,10 @@ class QuestWidget extends ConsumerWidget {
             ),
           ),
           Align(
+            alignment: const Alignment(0.8, 0.7),
+            child: IsSolvedWidget(quest: quest),
+          ),
+          Align(
             alignment: const Alignment(0.8, 0.95),
             child: SaveToFavouritesWidget(quest: quest),
           ),
@@ -71,15 +77,13 @@ class QuestWidget extends ConsumerWidget {
               children: <Widget>[
                 Material(
                   color: Colors.transparent,
-                  child: Container(
-                    child: Text(
-                      quest.name,
-                      style: appTheme.heading(),
-                    ),
+                  child: Text(
+                    quest.name,
+                    style: appTheme.heading(),
                   ),
                 ),
                 Text(
-                  "Learn more",
+                  AppLocalizations.of(context)!.learnMore,
                   style: appTheme.subHeading(),
                 ),
               ],

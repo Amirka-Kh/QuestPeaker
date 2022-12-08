@@ -6,7 +6,7 @@ final themeProvider =
 
 class ThemeNotifier extends StateNotifier<AppTheme> {
   ThemeNotifier() : super(AppThemeDefault());
-  void setTab(AppTheme tab) {
-    state = tab;
+  void set(AppTheme theme) {
+    state = theme;
   }
 }
