@@ -1,0 +1,220 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.quest_peak"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:3:4-65
+11-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:3:21-63
+12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+12-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:4:4-77
+12-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:4:21-75
+13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+13-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:5:4-79
+13-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:5:21-77
+14    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+14-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-77
+14-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-74
+15    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.firebase:firebase-database:20.1.0] /home/igor/.gradle/caches/transforms-3/adecf29dcf86a413fdce2de1258daf5d/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:24:5-79
+16-->[com.google.firebase:firebase-database:20.1.0] /home/igor/.gradle/caches/transforms-3/adecf29dcf86a413fdce2de1258daf5d/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:24:22-76
+17
+18    <application
+19        android:name="android.app.Application"
+19-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:8:9-42
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.8.0] /home/igor/.gradle/caches/transforms-3/0fd89358a8dad79201b96080ed76b244/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+21        android:icon="@mipmap/ic_launcher"
+21-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:9:9-43
+22        android:label="Wnder" >
+22-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:7:9-30
+23        <activity
+23-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:10:9-30:20
+24            android:name="com.example.quest_peak.MainActivity"
+24-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:11:13-41
+25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+25-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:15:13-163
+26            android:exported="true"
+26-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:12:13-36
+27            android:hardwareAccelerated="true"
+27-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:16:13-47
+28            android:launchMode="singleTop"
+28-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:13:13-43
+29            android:theme="@style/LaunchTheme"
+29-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:14:13-47
+30            android:windowSoftInputMode="adjustResize" >
+30-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:17:13-55
+31
+32            <!--
+33                 Specifies an Android theme to apply to this Activity as soon as
+34                 the Android process has started. This theme is visible to the user
+35                 while the Flutter UI initializes. After that, this theme continues
+36                 to determine the Window background behind the Flutter UI.
+37            -->
+38            <meta-data
+38-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:22:13-25:17
+39                android:name="io.flutter.embedding.android.NormalTheme"
+39-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:23:15-70
+40                android:resource="@style/NormalTheme" />
+40-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:24:15-52
+41
+42            <intent-filter>
+42-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:26:13-29:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:27:17-68
+43-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:27:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:28:17-76
+45-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:28:27-74
+46            </intent-filter>
+47        </activity>
+48        <!--
+49             Don't delete the meta-data below.
+50             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+51        -->
+52        <meta-data
+52-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:33:9-35:33
+53            android:name="flutterEmbedding"
+53-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:34:13-44
+54            android:value="2" />
+54-->/home/igor/flutter-projects/QuestPeaker/android/app/src/main/AndroidManifest.xml:35:13-30
+55
+56        <service
+56-->[:firebase_crashlytics] /home/igor/flutter-projects/QuestPeaker/build/firebase_crashlytics/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-14:19
+57            android:name="com.google.firebase.components.ComponentDiscoveryService"
+57-->[:firebase_crashlytics] /home/igor/flutter-projects/QuestPeaker/build/firebase_crashlytics/intermediates/merged_manifest/release/AndroidManifest.xml:10:18-89
+58            android:directBootAware="true"
+58-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:34:13-43
+59            android:exported="false" >
+59-->[com.google.firebase:firebase-crashlytics:18.3.2] /home/igor/.gradle/caches/transforms-3/c386807b065c74b09efb2e4efe06cc42/transformed/jetified-firebase-crashlytics-18.3.2/AndroidManifest.xml:16:13-37
+60            <meta-data
+60-->[:firebase_crashlytics] /home/igor/flutter-projects/QuestPeaker/build/firebase_crashlytics/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+61                android:name="com.google.firebase.components:io.flutter.plugins.firebase.crashlytics.FlutterFirebaseAppRegistrar"
+61-->[:firebase_crashlytics] /home/igor/flutter-projects/QuestPeaker/build/firebase_crashlytics/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-130
+62                android:value="com.google.firebase.components.ComponentRegistrar" />
+62-->[:firebase_crashlytics] /home/igor/flutter-projects/QuestPeaker/build/firebase_crashlytics/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+63            <meta-data
+63-->[:firebase_database] /home/igor/flutter-projects/QuestPeaker/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+64                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+64-->[:firebase_database] /home/igor/flutter-projects/QuestPeaker/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-127
+65                android:value="com.google.firebase.components.ComponentRegistrar" />
+65-->[:firebase_database] /home/igor/flutter-projects/QuestPeaker/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+66            <meta-data
+66-->[:firebase_core] /home/igor/flutter-projects/QuestPeaker/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-13:85
+67                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+67-->[:firebase_core] /home/igor/flutter-projects/QuestPeaker/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:12:17-124
+68                android:value="com.google.firebase.components.ComponentRegistrar" />
+68-->[:firebase_core] /home/igor/flutter-projects/QuestPeaker/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:13:17-82
+69            <meta-data
+69-->[com.google.firebase:firebase-crashlytics:18.3.2] /home/igor/.gradle/caches/transforms-3/c386807b065c74b09efb2e4efe06cc42/transformed/jetified-firebase-crashlytics-18.3.2/AndroidManifest.xml:17:13-19:85
+70                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+70-->[com.google.firebase:firebase-crashlytics:18.3.2] /home/igor/.gradle/caches/transforms-3/c386807b065c74b09efb2e4efe06cc42/transformed/jetified-firebase-crashlytics-18.3.2/AndroidManifest.xml:18:17-115
+71                android:value="com.google.firebase.components.ComponentRegistrar" />
+71-->[com.google.firebase:firebase-crashlytics:18.3.2] /home/igor/.gradle/caches/transforms-3/c386807b065c74b09efb2e4efe06cc42/transformed/jetified-firebase-crashlytics-18.3.2/AndroidManifest.xml:19:17-82
+72            <meta-data
+72-->[com.google.firebase:firebase-database:20.1.0] /home/igor/.gradle/caches/transforms-3/adecf29dcf86a413fdce2de1258daf5d/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:31:13-33:85
+73                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+73-->[com.google.firebase:firebase-database:20.1.0] /home/igor/.gradle/caches/transforms-3/adecf29dcf86a413fdce2de1258daf5d/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:32:17-109
+74                android:value="com.google.firebase.components.ComponentRegistrar" />
+74-->[com.google.firebase:firebase-database:20.1.0] /home/igor/.gradle/caches/transforms-3/adecf29dcf86a413fdce2de1258daf5d/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:33:17-82
+75            <meta-data
+75-->[com.google.firebase:firebase-installations:17.1.0] /home/igor/.gradle/caches/transforms-3/06c2f96d4ed722700e1d0269063161b3/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:17:13-19:85
+76                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+76-->[com.google.firebase:firebase-installations:17.1.0] /home/igor/.gradle/caches/transforms-3/06c2f96d4ed722700e1d0269063161b3/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:18:17-127
+77                android:value="com.google.firebase.components.ComponentRegistrar" />
+77-->[com.google.firebase:firebase-installations:17.1.0] /home/igor/.gradle/caches/transforms-3/06c2f96d4ed722700e1d0269063161b3/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:19:17-82
+78        </service>
+79        <service
+79-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:9-16:56
+80            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+80-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-77
+81            android:enabled="true"
+81-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-35
+82            android:exported="false"
+82-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-37
+83            android:foregroundServiceType="location" />
+83-->[:geolocator_android] /home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-53
+84
+85        <uses-library
+85-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+86            android:name="androidx.window.extensions"
+86-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+87            android:required="false" />
+87-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+88        <uses-library
+88-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+89            android:name="androidx.window.sidecar"
+89-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+90            android:required="false" />
+90-->[androidx.window:window:1.0.0-beta04] /home/igor/.gradle/caches/transforms-3/955b60c573648c92758f9e57794bc3b1/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+91
+92        <activity
+92-->[com.google.android.gms:play-services-base:18.0.1] /home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+93            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+93-->[com.google.android.gms:play-services-base:18.0.1] /home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+94            android:exported="false"
+94-->[com.google.android.gms:play-services-base:18.0.1] /home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+95            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+95-->[com.google.android.gms:play-services-base:18.0.1] /home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+96
+97        <provider
+97-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:25:9-30:39
+98            android:name="com.google.firebase.provider.FirebaseInitProvider"
+98-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:26:13-77
+99            android:authorities="com.example.quest_peak.firebaseinitprovider"
+99-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:27:13-72
+100            android:directBootAware="true"
+100-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:28:13-43
+101            android:exported="false"
+101-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:29:13-37
+102            android:initOrder="100" />
+102-->[com.google.firebase:firebase-common:20.2.0] /home/igor/.gradle/caches/transforms-3/4f85e86b8cd059490c7eba62c64d81d9/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:30:13-36
+103
+104        <meta-data
+104-->[com.google.android.gms:play-services-basement:18.1.0] /home/igor/.gradle/caches/transforms-3/c9cacd907e5688cdd5c033c7071b8609/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+105            android:name="com.google.android.gms.version"
+105-->[com.google.android.gms:play-services-basement:18.1.0] /home/igor/.gradle/caches/transforms-3/c9cacd907e5688cdd5c033c7071b8609/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+106            android:value="@integer/google_play_services_version" />
+106-->[com.google.android.gms:play-services-basement:18.1.0] /home/igor/.gradle/caches/transforms-3/c9cacd907e5688cdd5c033c7071b8609/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+107
+108        <service
+108-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+109            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+109-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+110            android:exported="false" >
+110-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+111            <meta-data
+111-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+112                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+112-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+113                android:value="cct" />
+113-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/igor/.gradle/caches/transforms-3/582b8ab3724c684658fc14b5ab996fd4/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+114        </service>
+115        <service
+115-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+116            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+116-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+117            android:exported="false"
+117-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+118            android:permission="android.permission.BIND_JOB_SERVICE" >
+118-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+119        </service>
+120
+121        <receiver
+121-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+122            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+122-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+123            android:exported="false" />
+123-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/igor/.gradle/caches/transforms-3/2e1f7f93e340dcab16c310e826c1259b/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+124    </application>
+125
+126</manifest>

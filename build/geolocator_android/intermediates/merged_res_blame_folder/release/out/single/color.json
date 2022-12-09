@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_res/release/color/common_google_signin_btn_tint.xml",
+        "source": "/home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_res/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/home/igor/flutter-projects/QuestPeaker/build/geolocator_android/intermediates/merged_res/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/home/igor/.gradle/caches/transforms-3/9fc307146c5c982a647885250f930eae/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_text_light.xml"
+    }
+]

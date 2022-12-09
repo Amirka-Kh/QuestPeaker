@@ -1,4 +1,4 @@
-// import 'package:firebase_crashlytics/firebase_crashlytics.dart'; // Probably, one day...
+import 'package:firebase_crashlytics/firebase_crashlytics.dart'; // Seems, this day has come
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,7 +29,7 @@ class CustomError extends ConsumerWidget {
     final appTheme = ref.watch(themeProvider);
 
     if (!kDebugMode) {
-      // FirebaseCrashlytics.instance.log(errorLog());
+      FirebaseCrashlytics.instance.log(errorLog());
     }
     return Scaffold(
         body: Padding(
@@ -42,9 +42,7 @@ class CustomError extends ConsumerWidget {
                   flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: SizedBox(
-                      child: Image.asset('assets/icon/icon.png'),
-                    ),
+                    child: Image.asset('assets/icon/icon.png'),
                   ),
                 ),
                 Expanded(

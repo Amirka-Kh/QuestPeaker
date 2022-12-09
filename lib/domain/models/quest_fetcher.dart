@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:quest_peak/domain/models/quest_model.dart';
@@ -7,7 +9,28 @@ class QuestFetcher {
   static late Future<List<Quest>> quests;
 
   static void fetch() async {
-    quests = _fetchQuests();
+    quests = _fetchFirebase();
+  }
+
+  static Future<List<Quest>> _fetchFirebase() async {
+    List<Quest> quests = [];
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot = await ref.child('/').get();
+
+    final List<dynamic> list = snapshot.value as List<dynamic>;
+    for (int i = 0; i < list.length; i++) {
+      Map<String, dynamic> object = Map<String, dynamic>.from(list[i]!);
+      quests.add(Quest(
+          object['name']!,
+          object['description']!,
+          object['question']!,
+          object['answer']!,
+          object['latitude']!,
+          object['longitude']!,
+          object['imagePath']!,
+          toListQuestColor(object['colors']!.cast<String>())));
+    }
+    return quests;
   }
 
   static Future<List<Quest>> _fetchQuests() async {
