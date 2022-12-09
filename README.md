@@ -1,3 +1,6 @@
+![badge](https://github.com/Amirka-Kh/QuestPeaker/actions/workflows/firebase-hosting-merge.yml/badge.svg)
+![badge](https://github.com/Amirka-Kh/QuestPeaker/actions/workflows/firebase-hosting-pull-request.yml/badge.svg)
+
 # QuestPeak
 ## Description:
 Interactive city-scape quests.
