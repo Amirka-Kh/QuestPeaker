@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quest_peak/config/style_provider.dart';
+import 'package:quest_peak/domain/providers/style_provider.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
 import 'package:quest_peak/pages/home/widgets/to_favorite_button.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:quest_peak/config/settings_provider.dart';
-import 'package:quest_peak/config/style_provider.dart';
+import 'package:quest_peak/domain/providers/settings_provider.dart';
+import 'package:quest_peak/domain/providers/style_provider.dart';
 import 'package:quest_peak/config/styles.dart';
 
 part 'settings_model.g.dart';

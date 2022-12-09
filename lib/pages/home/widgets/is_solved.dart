@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quest_peak/config/quest_provider.dart';
-import 'package:quest_peak/domain/models/quest_tracker.dart';
+import 'package:quest_peak/domain/providers/quest_provider.dart';
+import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '/domain/models/quest_model.dart';

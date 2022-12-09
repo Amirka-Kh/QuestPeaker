@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quest_peak/config/settings_provider.dart';
-import 'package:quest_peak/config/style_provider.dart';
-import 'package:quest_peak/domain/models/quest_tracker.dart';
+import 'package:quest_peak/domain/providers/settings_provider.dart';
+import 'package:quest_peak/domain/providers/style_provider.dart';
+import 'package:quest_peak/domain/trackers/quest_saved_tracker.dart';
+import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 

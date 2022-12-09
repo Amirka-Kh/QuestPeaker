@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,7 +32,10 @@ class QuestFetcher {
     return quests;
   }
 
-  static Future<List<Quest>> _fetchQuests() async {
+  // Deprecated
+  // This function fetches data from github repo
+  // ignore: unused_element
+  static Future<List<Quest>> _fetchGithub() async {
     final response = await http.get(Uri.parse(
         'https://raw.githubusercontent.com/Amirka-Kh/QuestPeaker/main/api/quests.json'));
     if (response.statusCode == 200) {

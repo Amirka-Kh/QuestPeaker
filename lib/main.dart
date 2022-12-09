@@ -2,26 +2,27 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:quest_peak/config/settings_provider.dart';
-import 'package:quest_peak/domain/models/quest_fetcher.dart';
-import 'package:quest_peak/domain/models/quest_tracker.dart';
+import 'package:quest_peak/domain/providers/settings_provider.dart';
+import 'package:quest_peak/domain/fetchers/quest_fetcher.dart';
+import 'package:quest_peak/domain/trackers/quest_saved_tracker.dart';
+import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
 import './pages/home/home.dart';
 import './domain/models/quest_model.dart';
-import 'domain/models/custom_error.dart';
+import 'config/custom_error.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'config/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   runZonedGuarded<Future<void>>(() async {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
