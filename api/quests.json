@@ -16,7 +16,7 @@
         "answer": "Star",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Light.png",
+        "imagePath": "assets/quest/Light.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -26,7 +26,7 @@
         "answer": "Foodcourt",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Inscription.png",
+        "imagePath": "assets/quest/Inscription.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -36,7 +36,7 @@
         "answer": "132",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Emoji.png",
+        "imagePath": "assets/quest/Emoji.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -46,7 +46,7 @@
         "answer": "Yellow",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Plate.png",
+        "imagePath": "assets/quest/Plate.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -56,7 +56,7 @@
         "answer": "140",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Programming.png",
+        "imagePath": "assets/quest/Programming.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -66,7 +66,7 @@
         "answer": "6",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Products.png",
+        "imagePath": "assets/quest/Products.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
@@ -76,7 +76,7 @@
         "answer": "Tennis",
         "latitude": 55.752826,
         "longitude": 48.740995,
-        "imagePath": "assets/quest/Suffer.png",
+        "imagePath": "assets/quest/Suffer.jpg",
         "colors": ["lightGreen", "green"]
     },
     {
