@@ -6,6 +6,7 @@ import 'package:quest_peak/domain/providers/style_provider.dart';
 import 'package:quest_peak/domain/trackers/quest_saved_tracker.dart';
 import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
+import 'package:quest_peak/domain/trackers/settings_tracker.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class SettingsPage extends ConsumerStatefulWidget {
@@ -32,10 +33,6 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
             padding: const EdgeInsets.all(32.0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              TextButton(
-                onPressed: () => throw Exception(),
-                child: const Text("Throw Test Exception"),
-              ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
+import 'package:quest_peak/domain/trackers/settings_tracker.dart';
 import './pages/home/home.dart';
 import './domain/models/quest_model.dart';
 import 'config/custom_error.dart';

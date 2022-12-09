@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quest_peak/domain/providers/quest_provider.dart';
 import 'package:quest_peak/config/string.dart';
 import 'package:quest_peak/domain/providers/style_provider.dart';
-import 'package:quest_peak/domain/models/quest_locator.dart';
+import 'package:quest_peak/config/quest_geolocator.dart';
 import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 

@@ -54,10 +54,33 @@ QuestColor toQuestColor(String string) {
   }
 }
 
+String fromQuestColor(QuestColor string) {
+  switch (string) {
+    case QuestColor.lightGreen:
+      return 'lightGreen';
+    case QuestColor.green:
+      return 'green';
+    case QuestColor.darkRed:
+      return 'darkRed';
+    case QuestColor.red:
+      return 'red';
+    default:
+      throw 'Color not defined';
+  }
+}
+
 List<QuestColor> toListQuestColor(List<String> list) {
   List<QuestColor> list2 = [];
   for (String string in list) {
     list2.add(toQuestColor(string));
+  }
+  return list2;
+}
+
+List<String> fromListQuestColor(List<QuestColor> list) {
+  List<String> list2 = [];
+  for (QuestColor color in list) {
+    list2.add(fromQuestColor(color));
   }
   return list2;
 }

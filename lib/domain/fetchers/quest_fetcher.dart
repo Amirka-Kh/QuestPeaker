@@ -11,6 +11,28 @@ class QuestFetcher {
     quests = _fetchFirebase();
   }
 
+  static void addQuest(Quest quest) {
+    quests.then((list) async {
+      list.add(quest);
+      final ref = FirebaseDatabase.instance.ref("/");
+      List<Map<String, dynamic>> data = [];
+      for (int i = 0; i < list.length; i++) {
+        Map<String, dynamic> mp = {
+          "name": list[i].name,
+          "description": list[i].description,
+          "question": list[i].question,
+          "answer": list[i].answer,
+          "latitude": list[i].latitude,
+          "longitude": list[i].longitude,
+          "imagePath": list[i].imagePath,
+          "colors": fromListQuestColor(list[i].colors)
+        };
+        data.add(mp);
+      }
+      await ref.set(data);
+    });
+  }
+
   static Future<List<Quest>> _fetchFirebase() async {
     List<Quest> quests = [];
     final ref = FirebaseDatabase.instance.ref();

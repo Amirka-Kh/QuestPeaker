@@ -8,6 +8,7 @@ import 'package:quest_peak/domain/models/quest_model.dart';
 import 'package:quest_peak/domain/trackers/quest_saved_tracker.dart';
 import 'package:quest_peak/domain/trackers/quest_solved_tracker.dart';
 import 'package:quest_peak/domain/models/settings_model.dart';
+import 'package:quest_peak/pages/add_quest/add_quest.dart';
 import 'package:quest_peak/pages/home/widgets/quest.dart';
 import 'package:quest_peak/pages/home/widgets/quest_details.dart';
 import 'package:quest_peak/pages/settings/settings.dart';
@@ -42,6 +43,11 @@ class _HomePage extends ConsumerState<HomePage> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.applicationName),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _pushAddQuest,
+            tooltip: AppLocalizations.of(context)!.addQuest,
+          ),
           IconButton(
             icon: const Icon(Icons.list),
             onPressed: _pushSaved,
@@ -104,6 +110,11 @@ class _HomePage extends ConsumerState<HomePage> {
                 })),
       ),
     );
+  }
+
+  void _pushAddQuest() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const AddQuestPage()));
   }
 
   void _pushSaved() {
