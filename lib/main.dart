@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quest_peak/config/settings_provider.dart';
@@ -10,18 +12,30 @@ import 'package:quest_peak/domain/models/settings_model.dart';
 import './pages/home/home.dart';
 import './domain/models/quest_model.dart';
 import 'domain/models/custom_error.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
-  await Hive.initFlutter();
-  Hive
-    ..registerAdapter(QuestColorAdapter())
-    ..registerAdapter(QuestAdapter())
-    ..registerAdapter(FilterTypeAdapter())
-    ..registerAdapter(SettingsAdapter());
-  QuestSavedTracker.fetch();
-  QuestSolvedTracker.fetch();
-  QuestFetcher.fetch();
-  runApp(const ProviderScope(child: MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
+  runZonedGuarded<Future<void>>(() async {
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
+    await Hive.initFlutter();
+    Hive
+      ..registerAdapter(QuestColorAdapter())
+      ..registerAdapter(QuestAdapter())
+      ..registerAdapter(FilterTypeAdapter())
+      ..registerAdapter(SettingsAdapter());
+    QuestSavedTracker.fetch();
+    QuestSolvedTracker.fetch();
+    QuestFetcher.fetch();
+    runApp(const ProviderScope(child: MyApp()));
+  }, (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack));
 }
 
 class MyApp extends ConsumerWidget {

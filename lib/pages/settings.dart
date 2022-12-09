@@ -31,6 +31,10 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
             padding: const EdgeInsets.all(32.0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              TextButton(
+                onPressed: () => throw Exception(),
+                child: const Text("Throw Test Exception"),
+              ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

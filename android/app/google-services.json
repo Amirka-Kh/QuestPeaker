@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "352405451285",
+    "firebase_url": "https://quest-picker-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "quest-picker",
+    "storage_bucket": "quest-picker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352405451285:android:9c56d5e0aa7e4b1ba7141c",
+        "android_client_info": {
+          "package_name": "com.example.quest_peak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352405451285-co2j8fpuvsl29tjofcahat702luvvt8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACNW-fPmwltmJXxFNHyr5wwIiO-73fJHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352405451285-co2j8fpuvsl29tjofcahat702luvvt8k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "352405451285-2p2cac3s1rlih3942prf3st0h06b4i59.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.questPeak"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
