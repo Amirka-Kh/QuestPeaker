@@ -21,6 +21,19 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePage extends ConsumerState<HomePage> {
+  late PageController _pageController;
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(
+      viewportFraction: 1.0,
+      initialPage: currentPage,
+      keepPage: false,
+    );
+  }
+
   Future<List<Quest>> getListQuests() async {
     late List<Quest> quests, solvedQuests;
     await QuestFetcher.quests.then((list) => quests = list);
@@ -33,6 +46,18 @@ class _HomePage extends ConsumerState<HomePage> {
       case FilterType.notSolved:
         return quests.where((x) => !solvedQuests.contains(x)).toList();
     }
+  }
+
+  List<Widget> buildList(List<Quest> list) {
+    List<Widget> list2 = [];
+    for (int i = 0; i < list.length; i++) {
+      list2.add(QuestWidget(
+        quest: list[i],
+        pageController: _pageController,
+        currentPage: i,
+      ));
+    }
+    return list2;
   }
 
   @override
@@ -88,10 +113,7 @@ class _HomePage extends ConsumerState<HomePage> {
                           child: (snapshot.hasData)
                               ? (PageView(
                                   physics: const ClampingScrollPhysics(),
-                                  children: [
-                                    for (var i in snapshot.data!)
-                                      QuestWidget(quest: i)
-                                  ],
+                                  children: buildList(snapshot.data!),
                                 ))
                               : (snapshot.hasError)
                                   ? Text(
