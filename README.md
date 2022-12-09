@@ -15,8 +15,8 @@ Download APK [here](https://github.com/Amirka-Kh/QuestPeaker/blob/main/build/app
 ## Screenshots
 
 Custom ico of the app (previous version)
-<br/>
-<img width="100" alt="imagen" src="/Screenshots/img.png">
+![](https://github.com/Amirka-Kh/QuestPeaker/blob/main/demo.gif)
+
 
 You can scroll through and look for an interesting quest. Clicking "learn more" will take you to the details page, which shows a short story about the quest.
 On the bottom of description where is a text input. User input his answer and app checks its relevance.
@@ -32,5 +32,3 @@ quest and details page screen
 <br/>
 <img width="400" alt="imagen" src="/Screenshots/img_3.png">
 <img width="400" alt="imagen" src="/Screenshots/img_4.png">
-<img width="400" alt="imagen" src="/Screenshots/img_5.png">
-<img width="400" alt="imagen" src="/Screenshots/img_6.png">
