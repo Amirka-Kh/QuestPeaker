@@ -1,6 +1,6 @@
 {
     "applicationName": "Wnder",
-    "savedSuggestions": "Saved Suggestions",
+    "savedSuggestions": "Saved suggestions",
     "learnMore": "Learn more",
     "save": "Save",
     "removeFromSaved": "Remove from saved",
@@ -24,8 +24,8 @@
     "innopolisSecrets2": "Secrets",
     "connectionError": "Could not connect to internet",
     "enterYourAnswer": "Enter your answer",
-    "correctAnswer": "You are right!",
-    "incorrectAnswer": "Try again!",
+    "correctAnswer": "Correct",
+    "incorrectAnswer": "Incorrect",
     "addQuest": "Add quest",
     "name": "Name",
     "description": "Description",
