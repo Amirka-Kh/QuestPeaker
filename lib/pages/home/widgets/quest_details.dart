@@ -52,14 +52,17 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
           body: Stack(
             fit: StackFit.expand, // will use available space
             children: <Widget>[
-              DecoratedBox(
-                  decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: toListColor(widget.quest.colors),
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                ),
-              )),
+              Hero(
+                tag: 'background-${widget.quest.name}',
+                child: DecoratedBox(
+                    decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: toListColor(widget.quest.colors),
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                )),
+              ),
               SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,8 +120,16 @@ class _QuestDetailsWidgetState extends ConsumerState<QuestDetailsWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8),
-                      child: Image.asset(widget.quest.imagePath,
-                          height: screenHeight * 0.4),
+                      child: Hero(
+                        tag: "image-${widget.quest.name}",
+                        child: ClipOval(
+                          child: Image.asset(
+                            widget.quest.imagePath,
+                            height: screenHeight * 0.4,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
